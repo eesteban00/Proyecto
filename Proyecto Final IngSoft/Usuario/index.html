@@ -1,24 +1,55 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <title>Educational registration form</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="main-block">
-      <div class="left-part">
-        
-        <h1>Registro y consulta de tickets de soporte</h1>
-        <p>Concordia S.A.</p>
-        <div class="btn-group">
-          <a class="btn-item" href="ingresar.html">Ingresar Ticket</a>
-          <a class="btn-item" href="consultar.html">Consultar</a>
-          <br><a class="btn-exit" href="login.html">Salir</a>
-        </div>
-      </div>
-      
-    </div>
-  </body>
+   <form method="post" action="login-usuario.php">
+   <head>
+      <title>Inicio de Sesion</title>
+   </head>
+   <link rel="stylesheet" href="login.css">
+   <meta charset="utf-8"
+   <script src="login.js"></script>
+<div class="overlay">
+<!-- LOGN IN FORM by Omar Dsoky -->
+<form>
+   <!--   con = Container  for items in the form-->
+   <div class="con">
+   <!--     Start  header Content  -->
+   <header class="head-form">
+      <h2>Inico de Sesion</h2>
+      <!--     A welcome message or an explanation of the login form -->
+      <p>Ingreso para usuarios Internos</p>
+   </header>
+   <!--     End  header Content  -->
+   <br>
+   <div class="field-set">
+     <form id="form1" action="ingresar.html">
+      <!--   user name -->
+         <span class="input-item">
+           <i class="fa fa-user-circle"></i>
+         </span>
+        <!--   user name Input-->
+         <input class="form-input" id="txt-input" name="usuario" type="text" placeholder="Usuario" required>
+     
+      <br>
+     
+           <!--   Password -->
+      <!--   Password Input-->
+      <input class="form-input" type="password" placeholder="Contraseña" id="pwd"  name="password" required>
+      <br>
+   </div>
+  
+<!--   other buttons -->
+   <div class="other">
+<!--      Forgot Password button-->
+      <button class="btn submits frgt-pass"><a href="../Proyecto/login.html">Admin</a></button>
+<!--     Sign Up button -->
+      <button class="btn submits sign-up" onclick="ingresar()">Ingresar
+<!--         Sign Up font icon -->
+      <i class="fa fa-user-plus" aria-hidden="true"></i>
+   </form>  </button>
+   </div>
+     
+  </div>
+  
+</form>
+</div>
+</form>
 </html>
