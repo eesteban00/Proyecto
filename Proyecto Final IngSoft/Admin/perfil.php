@@ -9,15 +9,18 @@ if($conn -> connect_errno)
 {
     die("Fallo la conexion: (".$onn -> mysqli_connect_errno().")".$conn -> mysqli_connect_error());
 }
+
 function write_to_console($data) {
 
     $console = 'console.log(' . json_encode($data) . ');';
     $console = sprintf('<script>%s</script>', $console);
     echo $console;
 }
-$tickets = "SELECT t.id id, t.Descripcion descripcion, t.Administrador administrador, t.Usuario usuario, t.Fecha_solicitud fecha_solicitud, a.area area from Tickets t inner join areas a on a.id = t.area where t.estado = 2";
-$restickets = $conn->query($tickets);
-write_to_console($restickets);
+include("login-admin.php");
+$perfil = "SELECT usuario, nombre, apellido, fecha_nac FROM usuarioadmin WHERE usuario ='".$usuario."'";
+write_to_console($usuario);
+
+$resperfil = $conn -> query($perfil);
 ?>
 
 <html>
@@ -55,7 +58,7 @@ write_to_console($restickets);
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tag"></i>Tickets</a>
                         <ul class="sub-menu children dropdown-menu"><li><i class="fa fa fa-tag"></i><a href="tactivos.php">Tickets Activos</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="treporte.php">Reporte de Tickets</a></li>
-                            <li><i class="fa fa fa-tag"></i><a href="busqueda.php">Busqueda de Tickets</a></li>
+                            <li><i class="fa fa fa-tag"></i><a href="tbusqueda.php">Busqueda de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="tespera.php">Tickets en Espera</a></li>
                         </ul>
                     </li>
@@ -117,9 +120,6 @@ write_to_console($restickets);
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>Reporte de Tickets</h1>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,21 +136,19 @@ write_to_console($restickets);
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h1> Listado de Tickets resueltos</h1>
+                                    <h1> Informacion del Usuario</h1>
                                     <section>
                     <table class="table">
                     <table border>
                                     <tr>
-                                    <th colspan=2>ID</th> <th colspan=2>DESCRIPCION</th> <th colspan=2>ADMINISTRADOR</th> <th colspan=2>USUARIO</th>
-                                    <th colspan=2>FECHA DE SOLICITUD</th> <th colspan=2>AREA</th>
+                                    <th colspan=2>USUARIO</th> <th colspan=2>NOMBRE</th> <th colspan=2>APELLIDO</th> <th colspan=2>FECHA DE NACIMIENTO</th>
                                     </tr>
                                     <?php
-                                    while($registrotickets = $restickets -> fetch_array(MYSQLI_BOTH))
+                                    while($registroperfiles = $resperfil -> fetch_array(MYSQLI_BOTH))
                                     {
                                     echo    '<tr>
-                                    <td colspan=2>'.$registrotickets['id'].'</td>   <td colspan=2>'.$registrotickets['descripcion'].'</td>
-                                    <td colspan=2>'.$registrotickets['administrador'].'</td>  <td colspan=2>'.$registrotickets['usuario'].'</td>
-                                    <td colspan=2>'.$registrotickets['fecha_solicitud'].'</td> <td colspan=2>'.$registrotickets['area'].'</td>
+                                    <td colspan=2>'.$registroperfiles['usuario'].'</td>   <td colspan=2>'.$registroperfiles['nombre'].'</td>
+                                    <td colspan=2>'.$registroperfiles['apellido'].'</td>  <td colspan=2>'.$registroperfiles['fecha_nac'].'</td>
                                     </tr>';
                                     }
                                     ?>

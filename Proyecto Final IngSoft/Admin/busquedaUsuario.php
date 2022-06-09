@@ -15,9 +15,6 @@ function write_to_console($data) {
     $console = sprintf('<script>%s</script>', $console);
     echo $console;
 }
-$tickets = "SELECT t.id id, t.Descripcion descripcion, t.Administrador administrador, t.Usuario usuario, t.Fecha_solicitud fecha_solicitud, a.area area from Tickets t inner join areas a on a.id = t.area where t.estado = 2";
-$restickets = $conn->query($tickets);
-write_to_console($restickets);
 ?>
 
 <html>
@@ -62,7 +59,7 @@ write_to_console($restickets);
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-filter"></i>Busqueda</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-filter"></i><a href="busquedaUsuario.php">Usuario solicitante</a></li>
+                            <li><i class="fa fa-filter"></i><a href="tables-data.html">Usuario solicitante</a></li>
                         </ul>
                     </li>
                     <li class="menu-title">Extras</li><!-- /.menu-title -->
@@ -118,7 +115,7 @@ write_to_console($restickets);
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Reporte de Tickets</h1>
+                                <h1>Informacion de Usuario</h1>
                             </div>
                         </div>
                     </div>
@@ -135,24 +132,32 @@ write_to_console($restickets);
 
                             <div class="card">
                                 <div class="card-body">
-
-                                    <h1> Listado de Tickets resueltos</h1>
+                                <form action="" method="get">
+                                            Nombre de Usuario <input type="text" name="nombre"><br>
+                                            <input type="submit" name='enviar' value="Enviar">
+                                        </form>
                                     <section>
                     <table class="table">
                     <table border>
                                     <tr>
-                                    <th colspan=2>ID</th> <th colspan=2>DESCRIPCION</th> <th colspan=2>ADMINISTRADOR</th> <th colspan=2>USUARIO</th>
-                                    <th colspan=2>FECHA DE SOLICITUD</th> <th colspan=2>AREA</th>
+                                    <th colspan=2>USUARIO</th> <th colspan=2>NOMBRE</th> <th colspan=2>APELLIDO</th> <th colspan=2>FECHA DE NACIMIENTO</th>
                                     </tr>
                                     <?php
-                                    while($registrotickets = $restickets -> fetch_array(MYSQLI_BOTH))
-                                    {
-                                    echo    '<tr>
-                                    <td colspan=2>'.$registrotickets['id'].'</td>   <td colspan=2>'.$registrotickets['descripcion'].'</td>
-                                    <td colspan=2>'.$registrotickets['administrador'].'</td>  <td colspan=2>'.$registrotickets['usuario'].'</td>
-                                    <td colspan=2>'.$registrotickets['fecha_solicitud'].'</td> <td colspan=2>'.$registrotickets['area'].'</td>
+
+                                    if(isset($_GET['enviar'])){
+                                        $busqueda = $_GET['nombre'];
+                                        $consulta = $conn->query("SELECT * from usuarios where Usuario ='$busqueda'");
+                                        
+                                        while($row=$consulta->fetch_array()){
+                                            echo    '<tr>
+                                    <td colspan=2>'.$row['Usuario'].'</td>   <td colspan=2>'.$row['Nombre'].'</td>
+                                    <td colspan=2>'.$row['Apellido'].'</td>  <td colspan=2>'.$row['Fecha_nac'].'</td>
                                     </tr>';
+                                        }
                                     }
+                                    write_to_console($busqueda);
+                                    write_to_console($consulta);
+                                    write_to_console($row);
                                     ?>
                     </table>
                                 </div>

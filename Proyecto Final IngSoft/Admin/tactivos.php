@@ -9,15 +9,9 @@ if($conn -> connect_errno)
 {
     die("Fallo la conexion: (".$onn -> mysqli_connect_errno().")".$conn -> mysqli_connect_error());
 }
-function write_to_console($data) {
 
-    $console = 'console.log(' . json_encode($data) . ');';
-    $console = sprintf('<script>%s</script>', $console);
-    echo $console;
-}
-$tickets = "SELECT t.id id, t.Descripcion descripcion, t.Administrador administrador, t.Usuario usuario, t.Fecha_solicitud fecha_solicitud, a.area area from Tickets t inner join areas a on a.id = t.area where t.estado = 2";
-$restickets = $conn->query($tickets);
-write_to_console($restickets);
+$tickets = "SELECT t.id id, t.Descripcion descripcion, t.Administrador administrador, t.Usuario usuario, t.Fecha_solicitud fecha_solicitud, a.area area from Tickets t inner join areas a on a.id = t.area where t.estado = 1";
+$restickets = $conn -> query($tickets);
 ?>
 
 <html>
@@ -62,7 +56,7 @@ write_to_console($restickets);
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-filter"></i>Busqueda</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-filter"></i><a href="busquedaUsuario.php">Usuario solicitante</a></li>
+                            <li><i class="fa fa-filter"></i><a href="busquedaUsuario.phpl">Usuario solicitante</a></li>
                         </ul>
                     </li>
                     <li class="menu-title">Extras</li><!-- /.menu-title -->
@@ -136,7 +130,7 @@ write_to_console($restickets);
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h1> Listado de Tickets resueltos</h1>
+                                    <h1> Listado de tickets activos</h1>
                                     <section>
                     <table class="table">
                     <table border>

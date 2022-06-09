@@ -15,7 +15,7 @@ function write_to_console($data) {
     $console = sprintf('<script>%s</script>', $console);
     echo $console;
 }
-$tickets = "SELECT t.id id, t.Descripcion descripcion, t.Administrador administrador, t.Usuario usuario, t.Fecha_solicitud fecha_solicitud, a.area area from Tickets t inner join areas a on a.id = t.area where t.estado = 2";
+$tickets = "SELECT t.id id, t.Descripcion descripcion, t.Administrador administrador, t.Usuario usuario, t.Fecha_solicitud fecha_solicitud, a.area area from Tickets t inner join areas a on a.id = t.area where t.estado = 3";
 $restickets = $conn->query($tickets);
 write_to_console($restickets);
 ?>
