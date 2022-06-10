@@ -54,6 +54,7 @@ function write_to_console($data) {
                             <li><i class="fa fa fa-tag"></i><a href="treporte.php">Reporte de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="busqueda.php">Busqueda de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="tespera.php">Tickets en Espera</a></li>
+                            <li><i class="fa fa fa-tag"></i><a href="trespuesta.php">Respuesta de tickets</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -66,7 +67,7 @@ function write_to_console($data) {
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-info"></i>Asistencia</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-info"></i><a href="page-login.html">Ayuda</a></li>
+                            <li><i class="menu-icon fa fa-info"></i><a href="ayuda.html">Ayuda</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -141,13 +142,16 @@ function write_to_console($data) {
                     <table border>
                                     <tr>
                                     <th colspan=2>ID</th> <th colspan=2>DESCRIPCION</th> <th colspan=2>ADMINISTRADOR</th> <th colspan=2>USUARIO</th>
-                                    <th colspan=2>FECHA DE SOLICITUD</th><th colspan=2>ESTADO</th><th colspan=2>AREA</th>
+                                    <th colspan=2>FECHA DE SOLICITUD</th><th colspan=2>ESTADO</th><th colspan=2>AREA</th> <th colspan=2>FECHA SOLUCION</th>
+                                    <th colspan=2>RESPUESTA</th>
                                     </tr>
                                     <?php
 
                                     if(isset($_GET['enviar'])){
                                         $busqueda = $_GET['numero'];
-                                        $consulta = $conn->query("SELECT t.id id, t.descripcion descripcion, t.administrador administrador, t.usuario usuario, t.fecha_solicitud fecha_solicitud, e.estado_desc estado, a.area area
+                                        $consulta = $conn->query("SELECT t.id id, t.descripcion descripcion, 
+                                        t.administrador administrador, t.usuario usuario, t.fecha_solicitud fecha_solicitud, 
+                                        e.estado_desc estado, a.area area, t.fecha_solucion, t.respuesta
                                         FROM Tickets t 
                                         inner join Estados e on e.id = t.estado 
                                         inner join areas a on a.id = t.area
@@ -158,7 +162,7 @@ function write_to_console($data) {
                                     <td colspan=2>'.$row['id'].'</td>   <td colspan=2>'.$row['descripcion'].'</td>
                                     <td colspan=2>'.$row['administrador'].'</td>  <td colspan=2>'.$row['usuario'].'</td>
                                     <td colspan=2>'.$row['fecha_solicitud'].'</td> <td colspan=2>'.$row['estado'].'</td>
-                                    <td colspan=2>'.$row['area'].'</td>
+                                    <td colspan=2>'.$row['area'].'</td> <td colspan=2>'.$row['fecha_solucion'].'</td> <td colspan=2>'.$row['respuesta'].'</td>
                                     </tr>';
                                         }
                                     }

@@ -1,19 +1,3 @@
-<?php
-$servername ="localhost";
-$database="id19027177_soporte";
-$username ="id19027177_root";
-$pass="Password123!";
-
-$conn=mysqli_connect($servername, $username, $pass, $database);
-if($conn -> connect_errno)
-{
-    die("Fallo la conexion: (".$onn -> mysqli_connect_errno().")".$conn -> mysqli_connect_error());
-}
-
-$tickets = "SELECT t.id id, t.Descripcion descripcion, t.Administrador administrador, t.Usuario usuario, t.Fecha_solicitud fecha_solicitud, a.area area from Tickets t inner join areas a on a.id = t.area where t.estado = 1 or t.estado = 3";
-$restickets = $conn -> query($tickets);
-?>
-
 <html>
 <html class="no-js" lang="">
 <head>
@@ -49,7 +33,7 @@ $restickets = $conn -> query($tickets);
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tag"></i>Tickets</a>
                         <ul class="sub-menu children dropdown-menu"><li><i class="fa fa fa-tag"></i><a href="tactivos.php">Tickets Activos</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="treporte.php">Reporte de Tickets</a></li>
-                            <li><i class="fa fa fa-tag"></i><a href="busqueda.php">Busqueda de Tickets</a></li>
+                            <li><i class="fa fa fa-tag"></i><a href="tbusqueda.php">Busqueda de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="tespera.php">Tickets en Espera</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="trespuesta.php">Respuesta de tickets</a></li>
                         </ul>
@@ -57,7 +41,7 @@ $restickets = $conn -> query($tickets);
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-filter"></i>Busqueda</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-filter"></i><a href="busquedaUsuario.phpl">Usuario solicitante</a></li>
+                            <li><i class="fa fa-filter"></i><a href="busquedaUsuario.php">Usuario solicitante</a></li>
                         </ul>
                     </li>
                     <li class="menu-title">Extras</li><!-- /.menu-title -->
@@ -112,9 +96,6 @@ $restickets = $conn -> query($tickets);
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>Reporte de Tickets</h1>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,24 +112,13 @@ $restickets = $conn -> query($tickets);
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h1> Listado de tickets activos</h1>
+                                    <h1> AYUDA</h1>
                                     <section>
                     <table class="table">
                     <table border>
                                     <tr>
-                                    <th colspan=2>ID</th> <th colspan=2>DESCRIPCION</th> <th colspan=2>ADMINISTRADOR</th> <th colspan=2>USUARIO</th>
-                                    <th colspan=2>FECHA DE SOLICITUD</th> <th colspan=2>AREA</th>
+                                    <th colspan=2>COMUNIQUESE CON EL ADMINISTRADOR DE LA PAGINA</th> 
                                     </tr>
-                                    <?php
-                                    while($registrotickets = $restickets -> fetch_array(MYSQLI_BOTH))
-                                    {
-                                    echo    '<tr>
-                                    <td colspan=2>'.$registrotickets['id'].'</td>   <td colspan=2>'.$registrotickets['descripcion'].'</td>
-                                    <td colspan=2>'.$registrotickets['administrador'].'</td>  <td colspan=2>'.$registrotickets['usuario'].'</td>
-                                    <td colspan=2>'.$registrotickets['fecha_solicitud'].'</td> <td colspan=2>'.$registrotickets['area'].'</td>
-                                    </tr>';
-                                    }
-                                    ?>
                     </table>
                                 </div>
                             </div><!-- /# card -->

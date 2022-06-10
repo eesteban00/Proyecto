@@ -16,11 +16,11 @@ function write_to_console($data) {
     $console = sprintf('<script>%s</script>', $console);
     echo $console;
 }
-include("login-admin.php");
-$perfil = "SELECT usuario, nombre, apellido, fecha_nac FROM usuarioadmin WHERE usuario ='".$usuario."'";
-write_to_console($usuario);
-
-$resperfil = $conn -> query($perfil);
+$usuario = '';
+//$perfil = "SELECT usuario, nombre, apellido, fecha_nac FROM usuarioadmin WHERE usuario ='".$usuario."'";
+write_to_console($perfil);
+//$resperfil = $conn -> query($perfil);
+write_to_console($resperfil);
 ?>
 
 <html>
@@ -60,6 +60,7 @@ $resperfil = $conn -> query($perfil);
                             <li><i class="fa fa fa-tag"></i><a href="treporte.php">Reporte de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="tbusqueda.php">Busqueda de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="tespera.php">Tickets en Espera</a></li>
+                            <li><i class="fa fa fa-tag"></i><a href="trespuesta.php">Respuesta de tickets</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -72,7 +73,7 @@ $resperfil = $conn -> query($perfil);
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-info"></i>Asistencia</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-info"></i><a href="page-login.html">Ayuda</a></li>
+                            <li><i class="menu-icon fa fa-info"></i><a href="ayuda.html">Ayuda</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -143,15 +144,6 @@ $resperfil = $conn -> query($perfil);
                                     <tr>
                                     <th colspan=2>USUARIO</th> <th colspan=2>NOMBRE</th> <th colspan=2>APELLIDO</th> <th colspan=2>FECHA DE NACIMIENTO</th>
                                     </tr>
-                                    <?php
-                                    while($registroperfiles = $resperfil -> fetch_array(MYSQLI_BOTH))
-                                    {
-                                    echo    '<tr>
-                                    <td colspan=2>'.$registroperfiles['usuario'].'</td>   <td colspan=2>'.$registroperfiles['nombre'].'</td>
-                                    <td colspan=2>'.$registroperfiles['apellido'].'</td>  <td colspan=2>'.$registroperfiles['fecha_nac'].'</td>
-                                    </tr>';
-                                    }
-                                    ?>
                     </table>
                                 </div>
                             </div><!-- /# card -->

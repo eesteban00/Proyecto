@@ -54,19 +54,20 @@ function write_to_console($data) {
                             <li><i class="fa fa fa-tag"></i><a href="treporte.php">Reporte de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="busqueda.php">Busqueda de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="tespera.php">Tickets en Espera</a></li>
+                            <li><i class="fa fa fa-tag"></i><a href="trespuesta.php">Respuesta de tickets</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-filter"></i>Busqueda</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-filter"></i><a href="tables-data.html">Usuario solicitante</a></li>
+                            <li><i class="fa fa-filter"></i><a href="busquedaUsuario.php">Usuario solicitante</a></li>
                         </ul>
                     </li>
                     <li class="menu-title">Extras</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-info"></i>Asistencia</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-info"></i><a href="page-login.html">Ayuda</a></li>
+                            <li><i class="menu-icon fa fa-info"></i><a href="ayuda.html">Ayuda</a></li>
                         </ul>
                     </li>
                 </ul>

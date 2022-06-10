@@ -57,6 +57,7 @@ write_to_console($restickets);
                             <li><i class="fa fa fa-tag"></i><a href="treporte.php">Reporte de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="busqueda.php">Busqueda de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="tespera.php">Tickets en Espera</a></li>
+                            <li><i class="fa fa fa-tag"></i><a href="trespuesta.php">Respuesta de tickets</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -69,7 +70,7 @@ write_to_console($restickets);
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-info"></i>Asistencia</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-info"></i><a href="page-login.html">Ayuda</a></li>
+                            <li><i class="menu-icon fa fa-info"></i><a href="ayuda.html">Ayuda</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -136,7 +137,7 @@ write_to_console($restickets);
                             <div class="card">
                                 <div class="card-body">
 
-                                    <h1> Listado de Tickets resueltos</h1>
+                                    <h1> Listado de Tickets en espera</h1>
                                     <section>
                     <table class="table">
                     <table border>

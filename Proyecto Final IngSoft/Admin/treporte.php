@@ -15,7 +15,7 @@ function write_to_console($data) {
     $console = sprintf('<script>%s</script>', $console);
     echo $console;
 }
-$tickets = "SELECT t.id id, t.Descripcion descripcion, t.Administrador administrador, t.Usuario usuario, t.Fecha_solicitud fecha_solicitud, a.area area from Tickets t inner join areas a on a.id = t.area where t.estado = 2";
+$tickets = "SELECT t.id id, t.Descripcion descripcion, t.Administrador administrador, t.Usuario usuario, t.Fecha_solicitud fecha_solicitud, a.area area, t.fecha_solucion, t.respuesta from Tickets t inner join areas a on a.id = t.area where t.estado = 2";
 $restickets = $conn->query($tickets);
 write_to_console($restickets);
 ?>
@@ -57,6 +57,7 @@ write_to_console($restickets);
                             <li><i class="fa fa fa-tag"></i><a href="treporte.php">Reporte de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="busqueda.php">Busqueda de Tickets</a></li>
                             <li><i class="fa fa fa-tag"></i><a href="tespera.php">Tickets en Espera</a></li>
+                            <li><i class="fa fa fa-tag"></i><a href="trespuesta.php">Respuesta de tickets</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -69,7 +70,7 @@ write_to_console($restickets);
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-info"></i>Asistencia</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-info"></i><a href="page-login.html">Ayuda</a></li>
+                            <li><i class="menu-icon fa fa-info"></i><a href="ayuda.html">Ayuda</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -142,7 +143,7 @@ write_to_console($restickets);
                     <table border>
                                     <tr>
                                     <th colspan=2>ID</th> <th colspan=2>DESCRIPCION</th> <th colspan=2>ADMINISTRADOR</th> <th colspan=2>USUARIO</th>
-                                    <th colspan=2>FECHA DE SOLICITUD</th> <th colspan=2>AREA</th>
+                                    <th colspan=2>FECHA DE SOLICITUD</th> <th colspan=2>AREA</th> <th colspan=2>FECHA DE SOLUCION</th> <th colspan=2>RESPUESTA</th>
                                     </tr>
                                     <?php
                                     while($registrotickets = $restickets -> fetch_array(MYSQLI_BOTH))
@@ -150,7 +151,8 @@ write_to_console($restickets);
                                     echo    '<tr>
                                     <td colspan=2>'.$registrotickets['id'].'</td>   <td colspan=2>'.$registrotickets['descripcion'].'</td>
                                     <td colspan=2>'.$registrotickets['administrador'].'</td>  <td colspan=2>'.$registrotickets['usuario'].'</td>
-                                    <td colspan=2>'.$registrotickets['fecha_solicitud'].'</td> <td colspan=2>'.$registrotickets['area'].'</td>
+                                    <td colspan=2>'.$registrotickets['fecha_solicitud'].'</td> <td colspan=2>'.$registrotickets['area'].'</td> 
+                                    <td colspan=2>'.$registrotickets['fecha_solucion'].'</td> <td colspan=2>'.$registrotickets['respuesta'].'</td>
                                     </tr>';
                                     }
                                     ?>

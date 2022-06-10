@@ -5,24 +5,19 @@ $username ="id19027177_root";
 $pass="Password123!";
 
 $conn=mysqli_connect($servername, $username, $pass, $database);
-
-function write_to_console($data) {
-
-    $console = 'console.log(' . json_encode($data) . ');';
-    $console = sprintf('<script>%s</script>', $console);
-    echo $console;
-}
+session_start();
 if (!$conn){
     die("Conexion fallida");
 }
 
-$result = mysqli_query($conn,"SELECT * FROM usuarioadmin WHERE usuario='" . $_POST["user"] . "' and password = '". $_POST["password"]."'");
-
+$result = mysqli_query($conn,"SELECT * FROM usuarios WHERE Usuario='" . $_POST["user"] . "' and Password = '". $_POST["password"]."'");
+    $usuario = $_GET["user"];
+    $_SESSION['user'] = $usuario;
     $count  = mysqli_num_rows($result);
     if($count==0) {
         echo"Usuario o contraseña incorrectos";
     } else {
-        header("location:menu.html");
+        header("location:ticketsusuarios.html");
     }
 mysqli_close($conn);
 
